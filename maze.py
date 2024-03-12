@@ -7,7 +7,7 @@ class Node():
         self.action = action
 
 
-class StackFrontier():
+class StackFrontier(): # last in first out data structure - implements the idea of a frontier
     def __init__(self):
         self.frontier = []
 
@@ -19,3 +19,29 @@ class StackFrontier():
 
     def empty(self):
         return len(self.frontier) == 0
+
+    def remove(self):
+        if self.empty():
+            raise Exception("empty frontier")
+        else:
+            node = self.frontier[-1] # gets the last one
+            self.frontier = self.frontier[:-1]
+            return node
+
+
+class QueueFrontier(StackFrontier):
+
+    def remove(self):
+        if self.empty():
+            raise Exception("empty frontier")
+        else:
+            node = self.frontier[0] # removing from the beginning of the list
+            self.frontier = self.frontier[1:]
+            return node
+
+
+class Maze():
+
+    def __init__(self, finename):
+
+        # Read foöe amd set height and width of maze
