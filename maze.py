@@ -63,7 +63,7 @@ class Maze():
         self.walls = []
         for i in range(self.height):
             now = []
-            for j in range(self.width)
+            for j in range(self.width):
                 try:
                     if contents[i][j] == "A":
                         self.start = (i, j)
@@ -85,7 +85,7 @@ class Maze():
         solution = self.solution[1] if self.solution is not None else None
         print()
         for i, row in enumerate(self.walls):
-            for j, col in enumerate(row)
+            for j, col in enumerate(row):
                 if col:
                     print("#", end="")
                 elif (i, j) == self.start:
