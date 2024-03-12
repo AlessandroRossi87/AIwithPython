@@ -119,3 +119,15 @@ class Maze():
             except IndexError:
                 continue
         return result
+
+
+    def solve(self):
+        """Finds a solution to maze, if one exists."""
+
+        # Keep track of number of states explored
+        self.num_explored = 0
+
+        # Initialize frontier to just the starting position
+        start = Node(state=self.start, parent=None, action=None)
+        frontier = StackFrontier()
+        frontier.add(start)
