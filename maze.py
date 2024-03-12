@@ -92,7 +92,7 @@ class Maze():
                     print("A", end="")
                 elif (i, j) == self.goal:
                     print("B", end="")
-                elif soluton is not None and (i, j) in solution:
+                elif solution is not None and (i, j) in solution:
                     print("*", end="")
                 else:
                     print(" ", end="")
