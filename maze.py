@@ -103,3 +103,19 @@ class Maze():
         row, col = state
         
         # All possible actions
+        candidates = [
+            ("up", (row -1, col)),
+            ("down", (row +1, col)),
+            ("left", (row, col -1)),
+            ("right", (row, col + 1))
+        ]
+
+        # Ensure actions are valid
+        result = []
+        for action, (r, c) in candidates:
+            try:
+                if not self.walls[r][c]:
+                    result.append((action, (r, c)))
+            except IndexError:
+                continue
+        return result
