@@ -62,7 +62,7 @@ class Maze():
         # Keep track of walls
         self.walls = []
         for i in range(self.height):
-            now = []
+            row = []
             for j in range(self.width):
                 try:
                     if contents[i][j] == "A":
@@ -92,7 +92,7 @@ class Maze():
                     print("A", end="")
                 elif (i, j) == self.goal:
                     print("B", end="")
-                elif soliton is not None and (i, j) in solution:
+                elif soluton is not None and (i, j) in solution:
                     print("*", end="")
                 else:
                     print(" ", end="")
