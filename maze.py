@@ -129,5 +129,34 @@ class Maze():
 
         # Initialize frontier to just the starting position
         start = Node(state=self.start, parent=None, action=None)
-        frontier = StackFrontier()
+        frontier = StackFrontier() # DFS
         frontier.add(start)
+
+        # Intialize an empty expored set
+        self.explored = set()
+
+        # Keep looping until solution found
+        while True:
+
+            # If nothing left in frontier, then no path
+            if frontier.empty():
+                raise Exception("no solution")
+
+            # Choose a node from the frontier
+            node = frontier.remove()
+            self.num_explored += 1
+
+            # If node is the goal, then we have a solution
+            if node.state == self.goal:
+                actions = []
+                cells = []
+
+                # Follow parent nodes to find solution
+                while node.parent is not None:
+                    actions.append(node.action)
+                    cells.append(node.state)
+                    node = node.parent
+                actions.reverse()
+                cells.reverse() # because goal to inital state, so we need to reverse
+                self.solution = (actions, cells)
+                return 
